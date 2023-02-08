@@ -1,0 +1,7 @@
+{
+  "name": "divex",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
