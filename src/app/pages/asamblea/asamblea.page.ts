@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { ChatComponent } from "../../components/chat/chat.component";
 import { ChartData, ChartEvent, ChartType } from "chart.js";
+import { VotosComponent } from "../../components/votos/votos.component";
 @Component({
   selector: 'app-asamblea',
   templateUrl: './asamblea.page.html',
@@ -17,6 +18,13 @@ export class AsambleaPage implements OnInit {
 			case "chat":
 				modal = await this.modalCtrl.create({
 					component: ChatComponent,
+					breakpoints: [0.5, 0.7],
+					canDismiss: true,
+				});
+				break;
+			case "votos":
+				modal = await this.modalCtrl.create({
+					component: VotosComponent,
 					breakpoints: [0.5, 0.7],
 					canDismiss: true,
 				});

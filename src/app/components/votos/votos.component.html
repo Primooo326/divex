@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-title>Votaciones</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="atras()" [strong]="true">Volver</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="container">
+
+    <ion-card *ngFor="let voto of votos$">
+      <ion-card-header>
+        <div class="d-flex justify-content-between">
+
+          <ion-card-title>{{voto.nombre}}</ion-card-title>
+          <ion-chip [color]="voto.activo === true ? 'success': 'danger'">{{voto.activo === true ?
+            'activo':'cerrado'}}</ion-chip>
+        </div>
+      </ion-card-header>
+      <ion-card-content class="mt-3">
+        {{voto.descripcion}}
+        <div *ngIf="!votosVotados.includes(voto.id)">
+
+          <h1 class="text-center">opciones a votar:</h1>
+          <div class="d-flex flex-wrap justify-content-center my-3 " *ngFor="let opcion of voto.opciones">
+
+            <ion-button [disabled]="!voto.activo || miInmueble.representado !== undefined" (click)="votar(opcion)"
+              shape="round">
+              {{opcion.nombre}}
+            </ion-button>
+
+          </div>
+        </div>
+        <div *ngIf="votosVotados.includes(voto.id)">
+          <h3>
+            Ya votaste!!!
+          </h3>
+        </div>
+        <canvas baseChart class="chart" [data]="chartData(voto)" [type]="pieChartType" [options]="pieChartOptions"
+          [plugins]="pieChartPlugins">
+        </canvas>
+        <div *ngFor="let item of voto.opciones">
+          <h3>{{item.nombre}}: {{item.votantes}} votantes / {{item.quorumRespectivo}}%</h3>
+        </div>
+        <h3>abstiene:{{noVotantes}}%</h3>
+
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

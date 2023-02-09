@@ -7,18 +7,20 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { TabsComponent } from "./tabs/tabs.component";
 import { ChatComponent } from "./chat/chat.component";
 import { NgChartsModule } from "ng2-charts";
-
+import { VotosComponent } from "./votos/votos.component";
+import { MatSortModule } from "@angular/material/sort";
 @NgModule({
   declarations: [
-     JitsiComponent, HeaderComponent, TabsComponent, ChatComponent
+     JitsiComponent, HeaderComponent, TabsComponent, ChatComponent, VotosComponent
   ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
     IonicModule.forRoot(),
-    // AppRoutingModule,
+    MatSortModule,
     CommonModule,
-    NgChartsModule
+    NgChartsModule,
+
   ],
   exports:[ JitsiComponent, HeaderComponent, TabsComponent, ChatComponent, NgChartsModule]
 })
