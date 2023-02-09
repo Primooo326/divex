@@ -24,3 +24,225 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+$black:#1D1C1D;
+$warn:#ff8c00;
+$gray:#E6E5E5;
+$success:#76B06F;
+$danger:#CE2222;
+$ligth:#FFFFFF;
+$primary:#00428e;
+.text-black{
+  color:$black
+}
+.text-warn{
+  color:$warn
+}
+.text-gray{
+  color:$gray
+}
+.text-success{
+  color:$success
+}
+.text-danger{
+  color:$danger
+}
+.text-ligth{
+  color:$ligth
+}
+.text-primary{
+  color:$primary
+}
+
+.black{
+  color:$ligth;
+  background-color: $black;
+}
+.warn{
+  color:$black;
+  background-color: $warn;
+}
+.gray{
+  color:$black;
+  background-color: $gray;
+}
+.success{
+  color:$black;
+  background-color: $success;
+}
+.danger{
+  color:$ligth;
+  background-color: $danger;
+}
+.ligth{
+  color:$black;
+  background-color: $ligth;
+}
+.primary{
+  color:$ligth;
+  background-color: $primary;
+}
+
+
+.black-outline{
+  background-color: transparent;
+  color:$black;
+  border-color: $black;
+  border: 1px solid $black;
+
+}
+.warn-outline{
+  background-color: transparent;
+  color:$warn;
+  border-color: $warn;
+  border: 1px solid $warn;
+
+}
+.gray-outline{
+  background-color: transparent;
+  color:$gray;
+  border-color: $gray;
+  border: 1px solid $gray;
+
+}
+.success-outline{
+  background-color: transparent;
+  color:$success;
+  border-color: $success;
+  border: 1px solid $success;
+
+}
+.danger-outline{
+  background-color: transparent;
+  color:$danger;
+  border-color: $danger;
+  border: 1px solid $danger;
+
+}
+.ligth-outline{
+  background-color: transparent;
+  color:$ligth;
+  border-color: $ligth;
+  border: 1px solid $ligth;
+
+}
+.primary-outline{
+  background-color: transparent;
+  color:$primary;
+  border-color: $primary;
+  border: 1px solid $primary;
+
+}
+
+.boton{
+
+  font-size: 20px;
+  width: 350px;
+  height: 75px;
+  border-radius: 50px;
+
+}
+.input{
+  border: 1px solid $black;
+  // border-color: $warn;
+  border-radius: 38px;
+  width: 350px;
+  height: 60px;
+
+  padding: 12px 60px;
+  font-size: 20px;
+}
+.input-wrapper {
+  position: relative;
+  width: 350px;
+  margin-bottom: 30px;
+}
+.input-icon-s {
+  position: absolute;
+  left: 25px;
+  top: 20px;
+  width: 20px;
+}
+.input-icon-e {
+  position: absolute;
+  right: 25px;
+  top: 20px;
+  width: 20px;
+}
+
+.letras{
+  font-weight: bold;
+  margin-top: 30px;
+  font-size: 20px;
+}
+.letras a{
+  text-decoration: none;
+  color: $black;
+}
+
+
+.imagenes img {
+  width: 100px;
+  height:auto;
+
+  margin: 0 auto;
+}
+
+
+.chart{
+  width: 35vw;
+}
+
+.container-change {
+  width: 100%;
+  display: flex;
+  padding: 30px;
+  flex-direction: column;
+  align-items: center;
+}
+.container-change form {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+  Pantallas de tamaños pequeños (smartphones, hasta 480px de ancho)
+*/
+@media only screen and (max-width: 480px) {
+  /* CSS para dispositivos de tamaño pequeño aquí */
+  .chart{
+    max-width: 95vw;
+  }
+}
+
+/*
+  Pantallas de tamaños medianos (tablets, de 480px a 768px de ancho)
+*/
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  /* CSS para dispositivos de tamaño mediano aquí */
+  .chart{
+    max-width: 75vw;
+  }
+}
+
+/*
+  Pantallas de tamaños grandes (ordenadores de sobremesa, de 768px a 1024px de ancho)
+*/
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  /* CSS para dispositivos de tamaño grande aquí */
+  .chart{
+    max-width: 55vw;
+  }
+}
+
+/*
+  Pantallas de tamaños extra grandes (pantallas de escritorio, más de 1024px de ancho)
+*/
+@media only screen and (min-width: 1024px) {
+  /* CSS para dispositivos de tamaño extra grande aquí */
+  .chart{
+    max-width: 35vw;
+  }
+}
