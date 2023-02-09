@@ -1,0 +1,6 @@
+<div id="jitsiFrame">
+  <div id="meeting1" style="height: 100%" *ngIf="cameraActive"></div>
+  <iframe *ngIf="!cameraActive" height="100%" width="100%" [src]="urlSafe" title="YouTube video player" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe>
+</div>

@@ -5,5 +5,13 @@
 </ion-header>
 
 <ion-content>
-
+  <app-jitsi></app-jitsi>
+  <div class="p-3 d-flex justify-content-between">
+    <h3>Quorum 34%</h3>
+    <ion-button>
+      <ion-icon name="hand-left-outline"></ion-icon>
+      Pedir palabra
+    </ion-button>
+  </div>
+  <app-tabs (modalEvent)="openModal($event)"></app-tabs>
 </ion-content>

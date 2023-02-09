@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-title>Chat general</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="atras()" [strong]="true">Volver</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content>
+
+  <div class="input">
+    <ion-textarea></ion-textarea>
+  </div>
+
+
+</ion-content>
+<!-- -->
+<ion-content class="background" #content id="content">
+  <div style="margin-bottom: 25%">
+    <div *ngFor="let item of chat" class="contenedor">
+      <ion-card [color]="item.color"
+        [ngClass]="{'childRigth':item.color === 'success', 'childLeft':item.color === 'primary'}">
+        <ion-card-content>
+          <h4>{{item.from}}</h4>
+          <ion-text color="dark">{{item.message}}</ion-text>
+          <p>{{item.fecha}}</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+  <div class="input-content">
+    <ion-textarea [formControl]="text" autoGrow="true" placeholder="Enter Input"></ion-textarea>
+    <ion-button class="boton-input" (click)="sendMessage()">
+      <ion-icon *ngIf="onSend === false" slot="icon-only" name="paper-plane"></ion-icon>
+      <div *ngIf="onSend" class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </ion-button>
+  </div>
+</ion-content>

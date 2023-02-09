@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { ModalController } from "@ionic/angular";
+import { ChatComponent } from "../../components/chat/chat.component";
 
 @Component({
   selector: 'app-asamblea',
@@ -6,10 +8,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./asamblea.page.scss'],
 })
 export class AsambleaPage implements OnInit {
+	constructor(private modalCtrl: ModalController) {}
 
-  constructor() { }
+	ngOnInit() {}
+	async openModal(modalEvent: string) {
+		let modal;
+		switch (modalEvent) {
+			case "chat":
+				modal = await this.modalCtrl.create({
+					component: ChatComponent,
+					breakpoints: [0.5, 0.7],
+					canDismiss: true,
+				});
+				break;
 
-  ngOnInit() {
-  }
+			default:
+				modal = await this.modalCtrl.create({
+					component: ChatComponent,
+				});
+				break;
+		}
 
+		modal.present();
+	}
 }
