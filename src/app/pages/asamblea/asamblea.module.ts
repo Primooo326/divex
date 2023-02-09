@@ -15,7 +15,8 @@ import { ComponentsModule } from "../../components/components.module";
     FormsModule,
     IonicModule,
     AsambleaPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+
   ],
   declarations: [AsambleaPage]
 })

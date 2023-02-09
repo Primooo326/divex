@@ -13,5 +13,13 @@
       Pedir palabra
     </ion-button>
   </div>
-  <app-tabs (modalEvent)="openModal($event)"></app-tabs>
+  <canvas baseChart class="chart" [data]="doughnutChartData" [type]="doughnutChartType">
+  </canvas>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Footer</ion-title>
+    <app-tabs (modalEvent)="openModal($event)"></app-tabs>
+
+  </ion-toolbar>
+</ion-footer>
