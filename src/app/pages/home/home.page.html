@@ -1,21 +1,81 @@
-<ion-menu contentId="main-content" >
-  <ion-header>
+<ion-menu contentId="main-content">
+  <ion-header class="ps-3">
     <ion-toolbar>
-      <ion-title>Menu Content</ion-title>
+      <!-- <ion-menu-toggle slot="end">
+        <ion-button><ion-icon name="close-outline"></ion-icon></ion-button>
+      </ion-menu-toggle> -->
+      <!-- <ion-buttons slot="end">
+        <ion-button><ion-icon name="close-outline"></ion-icon></ion-button>
+      </ion-buttons> -->
+      <ion-title>Informacion de la cuenta</ion-title>
     </ion-toolbar>
+    <ion-avatar>
+      <img alt="Silhouette of a person's head" [src]="user.img" />
+    </ion-avatar>
+    <h3>{{user.nombre}}</h3>
+    <h4>{{user.email}}</h4>
   </ion-header>
-  <ion-content class="ion-padding">This is the menu content.</ion-content>
+  <ion-content class="ion-padding">
+
+  </ion-content>
 </ion-menu>
 <div class="ion-page" id="main-content">
   <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Menu Button</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Divex</ion-title>
+    </ion-toolbar>
   </ion-header>
   <ion-content [fullscreen]="true">
 
+    <div class="m-3">
+      <ion-list-header>
+        <ion-label>
+          <strong>Mis asambleas:</strong>
+        </ion-label>
+        <ion-button id="open-modal">Agregar</ion-button>
+      </ion-list-header>
+
+      <div class=" row justify-content-center">
+        <ion-card *ngFor="let item of asambleas; let i=index" class="col-6 col-md-3">
+          <ion-card-content class="text-center">
+            <ion-chip color="success">Abierta</ion-chip>
+            <!-- <ion-chip color="danger">Cerrada</ion-chip> -->
+            Asamblea {{i}}
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+
+    <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+      <ng-template>
+        <ion-content class="m-3">
+          <ion-list-header>
+            <h3>Entrar a una asamblea</h3>
+          </ion-list-header>
+          <ion-list>
+            <ion-item>
+              <ion-label>Entrar con Qr</ion-label>
+              <ion-button slot="end">
+                <ion-icon name="qr-code-outline"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <ion-item>
+              <ion-label>Entrar con token</ion-label>
+              <ion-input placeholder="token"></ion-input>
+              <ion-button slot="end" (click)="token()" [routerLink]="['/asamblea']"
+                routerLinkActive="router-link-active">
+                Entrar
+              </ion-button>
+            </ion-item>
+          </ion-list>
+          <ion-list-header>
+            <h3>Crear una asamblea</h3>
+          </ion-list-header>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
   </ion-content>
 </div>
