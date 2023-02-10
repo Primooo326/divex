@@ -24,19 +24,152 @@ export class VotosComponent implements OnInit {
 			quorumTotal: 45,
 		};
 
-		this.votos$ = [
+		this.sortData({ active: "activo", direction: "desc" }, [
 			{
 				nombre: "voto 1",
+				id: "1",
 				activo: true,
+				seeVoto: true,
+				descripcion: "hola mundo",
+				opciones: [
+					{
+						nombre: "opcion 1",
+						quorumRespectivo: 0,
+					},
+					{
+						nombre: "opcion 2",
+						quorumRespectivo: 0,
+					},
+				],
+			},
+			{
+				nombre: "voto 2",
+				id: "2",
+				activo: false,
+				seeVoto: false,
 				descripcion: "hola mundo",
 				opciones: [
 					{
 						nombre: "opcion 1",
 						quorumRespectivo: 34,
 					},
+					{
+						nombre: "opcion 2",
+						quorumRespectivo: 66,
+					},
 				],
 			},
-		];
+			{
+				nombre: "voto 2",
+				id: "3",
+				activo: false,
+				seeVoto: false,
+				descripcion: "hola mundo",
+				opciones: [
+					{
+						nombre: "opcion 1",
+						quorumRespectivo: 34,
+					},
+					{
+						nombre: "opcion 2",
+						quorumRespectivo: 66,
+					},
+				],
+			},
+			{
+				nombre: "voto 2",
+				id: "4",
+				activo: false,
+				seeVoto: false,
+				descripcion: "hola mundo",
+				opciones: [
+					{
+						nombre: "opcion 1",
+						quorumRespectivo: 34,
+					},
+					{
+						nombre: "opcion 2",
+						quorumRespectivo: 66,
+					},
+				],
+			},
+			{
+				nombre: "voto 2",
+				id: "5",
+				activo: false,
+				seeVoto: false,
+				descripcion: "hola mundo",
+				opciones: [
+					{
+						nombre: "opcion 1",
+						quorumRespectivo: 34,
+					},
+					{
+						nombre: "opcion 2",
+						quorumRespectivo: 66,
+					},
+				],
+			},
+			{
+				nombre: "voto 7",
+				id: "6",
+				activo: true,
+				seeVoto: true,
+				descripcion: "hola mundo",
+				opciones: [
+					{
+						nombre: "opcion 1",
+						quorumRespectivo: 34,
+					},
+					{
+						nombre: "opcion 2",
+						quorumRespectivo: 66,
+					},
+				],
+			},
+			{
+				nombre: "voto 2",
+				id: "7",
+				activo: false,
+				seeVoto: false,
+				descripcion: "hola mundo",
+				opciones: [
+					{
+						nombre: "opcion 1",
+						quorumRespectivo: 34,
+					},
+					{
+						nombre: "opcion 2",
+						quorumRespectivo: 66,
+					},
+				],
+			},
+			{
+				nombre: "voto 2",
+				id: "8",
+				activo: false,
+				seeVoto: false,
+				descripcion: "hola mundo",
+				opciones: [
+					{
+						nombre: "opcion 1",
+						quorumRespectivo: 34,
+					},
+					{
+						nombre: "opcion 2",
+						quorumRespectivo: 66,
+					},
+				],
+			},
+		]);
+	}
+	changeViewVoto(voto: any) {
+		if (!voto.activo) {
+			// voto.seeVoto = !voto.seeVoto;
+			let idx = this.votos$.findIndex((v) => v.id === voto.id);
+			this.votos$[idx].seeVoto = !voto.seeVoto;
+			// this.sortData({ active: "activo", direction: "desc" }, this.votos$);
+		}
 	}
 	chartData(voto: any): ChartData<"pie", number[], string | string[]> {
 		const labels: string[] = [];

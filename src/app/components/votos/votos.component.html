@@ -17,21 +17,31 @@
         <div class="d-flex justify-content-between">
 
           <ion-card-title>{{voto.nombre}}</ion-card-title>
-          <ion-chip [color]="voto.activo === true ? 'success': 'danger'">{{voto.activo === true ?
-            'activo':'cerrado'}}</ion-chip>
+          <ion-chip (click)="changeViewVoto(voto)" [color]="voto.activo === true ? 'success': 'danger'">{{voto.activo
+            === true ?
+            'activo':'cerrado'}}
+            <ion-icon *ngIf="!voto.seeVoto && voto.activo === false " name="chevron-down-outline"></ion-icon>
+            <ion-icon *ngIf="voto.seeVoto && voto.activo === false " name="chevron-up-outline"></ion-icon>
+          </ion-chip>
         </div>
       </ion-card-header>
-      <ion-card-content class="mt-3">
+      <ion-card-content *ngIf="voto.seeVoto === true "
+        [ngClass]="{'animate__fadeInDown animate__faster': voto.seeVoto,'animate__fadeOutUp':!voto.seeVoto}"
+        class="mt-3 animate__animated ">
         {{voto.descripcion}}
-        <div *ngIf="!votosVotados.includes(voto.id)">
+        <div *ngIf="!votosVotados.includes(voto.id) && voto.activo">
 
           <h1 class="text-center">opciones a votar:</h1>
-          <div class="d-flex flex-wrap justify-content-center my-3 " *ngFor="let opcion of voto.opciones">
+          <div class="d-flex justify-content-center my-3 " *ngFor="let opcion of voto.opciones">
 
-            <ion-button [disabled]="!voto.activo || miInmueble.representado !== undefined" (click)="votar(opcion)"
+            <ion-button color="warning" shape="round">
+              {{opcion.nombre}}
+              <ion-checkbox color="success" class="ms-2" slot="end"></ion-checkbox>
+            </ion-button>
+            <!-- <ion-button [disabled]="!voto.activo || miInmueble.representado !== undefined" (click)="votar(opcion)"
               shape="round">
               {{opcion.nombre}}
-            </ion-button>
+            </ion-button> -->
 
           </div>
         </div>

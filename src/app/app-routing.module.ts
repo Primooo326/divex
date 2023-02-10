@@ -17,10 +17,13 @@ const routes: Routes = [
 		loadChildren: () =>
 			import("./pages/auth/auth.module").then((m) => m.AuthPageModule),
 	},
-  {
-    path: 'asamblea',
-    loadChildren: () => import('./pages/asamblea/asamblea.module').then( m => m.AsambleaPageModule)
-  },
+	{
+		path: "asamblea",
+		loadChildren: () =>
+			import("./pages/asamblea/asamblea.module").then(
+				(m) => m.AsambleaPageModule,
+			),
+	},
 ];
 
 @NgModule({

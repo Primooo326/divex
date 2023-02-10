@@ -10,8 +10,14 @@ import { VotosComponent } from "../../components/votos/votos.component";
 })
 export class AsambleaPage implements OnInit {
 	constructor(private modalCtrl: ModalController) {}
-
-	ngOnInit() {}
+	user = {
+		img: "https://ionicframework.com/docs/img/demos/avatar.svg",
+		nombre: "juan morales",
+		email: "juan@example.com",
+	};
+	ngOnInit() {
+		return;
+	}
 	async openModal(modalEvent: string) {
 		let modal;
 		switch (modalEvent) {

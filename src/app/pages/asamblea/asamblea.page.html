@@ -1,25 +1,51 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>asamblea</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="ion-page" id="asamblea-content">
 
-<ion-content>
-  <app-jitsi></app-jitsi>
-  <div class="p-3 d-flex justify-content-between">
-    <h3>Quorum 34%</h3>
-    <ion-button>
-      <ion-icon name="hand-left-outline"></ion-icon>
-      Pedir palabra
-    </ion-button>
-  </div>
-  <canvas baseChart class="chart" [data]="doughnutChartData" [type]="doughnutChartType">
-  </canvas>
-</ion-content>
-<ion-footer>
-  <ion-toolbar>
-    <ion-title>Footer</ion-title>
-    <app-tabs (modalEvent)="openModal($event)"></app-tabs>
+  <ion-header>
 
-  </ion-toolbar>
-</ion-footer>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>asamblea</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <app-jitsi></app-jitsi>
+    <div class="p-3 d-flex justify-content-between">
+      <h3>Quorum 34%</h3>
+      <ion-button>
+        <ion-icon name="hand-left-outline"></ion-icon>
+        Pedir palabra
+      </ion-button>
+    </div>
+    <canvas baseChart class="chart" [data]="doughnutChartData" [type]="doughnutChartType">
+    </canvas>
+  </ion-content>
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title>Footer</ion-title>
+      <app-tabs (modalEvent)="openModal($event)"></app-tabs>
+
+    </ion-toolbar>
+  </ion-footer>
+</div>
+
+<ion-menu contentId="asamblea-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Informacion de la cuenta</ion-title>
+    </ion-toolbar>
+    <div class="p-3">
+
+      <ion-avatar>
+        <img alt="Silhouette of a person's head" [src]="user.img" />
+      </ion-avatar>
+      <h3>{{user.nombre}}</h3>
+      <h4>{{user.email}}</h4>
+    </div>
+  </ion-header>
+  <ion-content class="ion-padding">
+
+  </ion-content>
+</ion-menu>
