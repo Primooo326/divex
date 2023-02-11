@@ -7,10 +7,9 @@ export interface IInmueble {
 	coeficientePropio?: number; // coeficiente de su apartamento
 	cedePoder?: boolean; // es o no poderdante
 	hasPower?: boolean; // deterimna si tiene poderes a cargo
-	// asistentes:number;
 	representa: [];
 	documento: string; // Documento de identificacion del propietario
-	profile?: string; // {SUPER_USER, MANAGER, PARTICIPANT, GUEST}
+	profile?: profile; // {SUPER_USER, MANAGER, PARTICIPANT, GUEST}
 	propietario: string; //
 	puedeVotar?: boolean; //
 	reenvio?: string; // bandera de reenvios de correo - posiblemente grupo
@@ -22,7 +21,12 @@ export interface IInmueble {
 	estado: string; // Activo, no activo
 	email?: string;
 }
-
+export enum profile {
+	SUPER_USER = "SUPER_USER",
+	MANAGER = "MANAGER",
+	PARTICIPANT = "PARTICIPANT",
+	GUEST = "GUEST",
+}
 export interface IInmuebleV2 {
 	inmueble: string;
 	coeficiente: number;
@@ -50,4 +54,16 @@ export enum EPerfil {
 export enum EStatusEmail {
 	noEnviado = "noEnviado",
 	enviado = "enviado",
+}
+export interface IInmuebleQuorum {
+	$key: string;
+	key: string;
+	asistentes: number;
+	torre: string;
+	apto: string;
+	coeficiente: number;
+	fecha: string;
+	inmueble: string;
+	nombre: string;
+	puedeVotar: boolean;
 }

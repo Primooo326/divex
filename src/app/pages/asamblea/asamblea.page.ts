@@ -3,13 +3,22 @@ import { ModalController } from "@ionic/angular";
 import { ChatComponent } from "../../components/chat/chat.component";
 import { ChartData, ChartEvent, ChartType } from "chart.js";
 import { VotosComponent } from "../../components/votos/votos.component";
+import { Store } from "@ngrx/store";
+import { quorumTotal } from "src/app/ngrx/selectors";
 @Component({
   selector: 'app-asamblea',
   templateUrl: './asamblea.page.html',
   styleUrls: ['./asamblea.page.scss'],
 })
 export class AsambleaPage implements OnInit {
-	constructor(private modalCtrl: ModalController) {}
+	quorum = 0;
+
+	constructor(private modalCtrl: ModalController, private store: Store<any>) {
+		this.store.select(quorumTotal).subscribe((data) => {
+			this.quorum = data;
+			console.log(data);
+		});
+	}
 	user = {
 		img: "https://ionicframework.com/docs/img/demos/avatar.svg",
 		nombre: "juan morales",

@@ -152,6 +152,16 @@ $primary:#00428e;
   padding: 12px 60px;
   font-size: 20px;
 }
+
+.input-error {
+  border: 1px solid $danger;
+  border-radius: 38px;
+  width: 350px;
+  height: 60px;
+  padding: 12px 60px;
+  font-size: 20px;
+}
+
 .input-wrapper {
   position: relative;
   width: 350px;
