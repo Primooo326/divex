@@ -5,6 +5,7 @@ import { ChartData, ChartEvent, ChartType } from "chart.js";
 import { VotosComponent } from "../../components/votos/votos.component";
 import { Store } from "@ngrx/store";
 import { quorumTotal } from "src/app/ngrx/selectors";
+import { ToolsService } from "../../services/tools.service";
 @Component({
   selector: 'app-asamblea',
   templateUrl: './asamblea.page.html',
@@ -13,11 +14,24 @@ import { quorumTotal } from "src/app/ngrx/selectors";
 export class AsambleaPage implements OnInit {
 	quorum = 0;
 
-	constructor(private modalCtrl: ModalController, private store: Store<any>) {
-		this.store.select(quorumTotal).subscribe((data) => {
-			this.quorum = data;
-			console.log(data);
-		});
+	constructor(
+		private modalCtrl: ModalController,
+		private store: Store<any>,
+		private _toolsSrvc: ToolsService,
+	) {
+		const asamblea = JSON.parse(localStorage.getItem("asamblea")!);
+		const inmueble = JSON.parse(localStorage.getItem("inmueble")!);
+
+		if (asamblea != null) {
+			if (asamblea.key !== "") {
+				this._toolsSrvc.startSubscriber(asamblea, inmueble);
+
+				this.store.select(quorumTotal).subscribe((data) => {
+					this.quorum = data;
+					console.log(data);
+				});
+			}
+		}
 	}
 	user = {
 		img: "https://ionicframework.com/docs/img/demos/avatar.svg",
@@ -58,7 +72,7 @@ export class AsambleaPage implements OnInit {
 	public doughnutChartLabels: string[] = ["Asistentes", "No Asistentes"];
 	public doughnutChartData: ChartData<"doughnut"> = {
 		labels: this.doughnutChartLabels,
-		datasets: [{ data: [130, 70] }],
+		datasets: [{ data: [this.quorum, 70] }],
 	};
 	public doughnutChartType: ChartType = "doughnut";
 

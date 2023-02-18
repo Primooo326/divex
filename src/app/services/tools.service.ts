@@ -8,9 +8,15 @@ import {
 	docData,
 } from "@angular/fire/firestore";
 import { INuevaAsamblea } from "../models/asambleaSys";
-import { IInmueble } from "../models/inmueble";
+import { IInmueble, IInmuebleQuorum } from "../models/inmueble";
 import { Store } from "@ngrx/store";
-import { asambleaActions, inmuebleActions } from "../ngrx/actions";
+import { votoActualActions } from "../ngrx/actions";
+import { IVoto } from "../models/votos";
+import {
+	asambleaActions,
+	inmuebleActions,
+	quorumActions,
+} from "../ngrx/actions";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +25,7 @@ export class ToolsService {
 	private asamblea$!: Subscription;
 	private inmueble$!: Subscription;
 	private asistentes$!: Subscription;
+	private votoActual$!: Subscription;
 	constructor(private _fire: Firestore, private store: Store) {}
 
 	startSubscriber(asamblea: INuevaAsamblea, inmueble: IInmueble) {
@@ -48,11 +55,24 @@ export class ToolsService {
 		this.asistentes$ = collectionData(asistentesFire).subscribe(
 			(asistentes: any[]) => {
 				console.log("asistentes:::", asistentes);
+				asistentes.forEach((asis: IInmuebleQuorum) => {
+					this.store.dispatch(
+						quorumActions.setQuorum({ coeficiente: asis.coeficiente }),
+					);
+				});
 			},
 		);
+
+		const votoActualFire = doc(this._fire, `${asamblea.key}/VotoActual`);
+
+		this.votoActual$ = docData(votoActualFire).subscribe((votacion: any) => {
+			console.log("votacion:::", votacion);
+			this.store.dispatch(votoActualActions.setVoto({ voto: votacion }));
+		});
 	}
 	stopSubscriber() {
 		this.inmueble$.unsubscribe();
 		this.asamblea$.unsubscribe();
+		this.asistentes$.unsubscribe();
 	}
 }

@@ -1,5 +1,6 @@
-import { createActionGroup, props } from "@ngrx/store";
+import { createActionGroup, emptyProps, props } from "@ngrx/store";
 import { IInmueble, IInmuebleQuorum } from "../models/inmueble";
+import { IVoto } from "../models/votos";
 import {
 	IAsambleaModo,
 	IAsambleaConfig,
@@ -29,5 +30,20 @@ export const asistentesActions = createActionGroup({
 	source: "asistentes",
 	events: {
 		"Set Asistentes": props<{ asistentes: IInmuebleQuorum[] }>(),
+	},
+});
+
+export const quorumActions = createActionGroup({
+	source: "quorum",
+	events: {
+		"Set Quorum": props<{ coeficiente: number }>(),
+		"Reset Quorum": emptyProps(),
+	},
+});
+export const votoActualActions = createActionGroup({
+	source: "votoActual",
+	events: {
+		"Set Voto": props<{ voto: IVoto }>(),
+		"Votacion Cerrada": emptyProps(),
 	},
 });

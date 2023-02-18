@@ -3,6 +3,7 @@ import { Sort } from "@angular/material/sort";
 import { ModalController } from "@ionic/angular";
 import { ChartConfiguration, ChartData, ChartType } from "chart.js";
 import DatalabelsPlugin from "chartjs-plugin-datalabels";
+import { IVoto } from "src/app/models/votos";
 
 @Component({
   selector: 'app-votos',
@@ -10,8 +11,8 @@ import DatalabelsPlugin from "chartjs-plugin-datalabels";
   styleUrls: ['./votos.component.scss'],
 })
 export class VotosComponent implements OnInit {
-	votos$: any[] = [];
-	votosVotados: any[] = [];
+	votos$: IVoto[] = [];
+	votosVotados: string[] = [];
 	miInmueble: any;
 	asamblea: any;
 	noVotantes: any;
@@ -24,144 +25,144 @@ export class VotosComponent implements OnInit {
 			quorumTotal: 45,
 		};
 
-		this.sortData({ active: "activo", direction: "desc" }, [
-			{
-				nombre: "voto 1",
-				id: "1",
-				activo: true,
-				seeVoto: true,
-				descripcion: "hola mundo",
-				opciones: [
-					{
-						nombre: "opcion 1",
-						quorumRespectivo: 0,
-					},
-					{
-						nombre: "opcion 2",
-						quorumRespectivo: 0,
-					},
-				],
-			},
-			{
-				nombre: "voto 2",
-				id: "2",
-				activo: false,
-				seeVoto: false,
-				descripcion: "hola mundo",
-				opciones: [
-					{
-						nombre: "opcion 1",
-						quorumRespectivo: 34,
-					},
-					{
-						nombre: "opcion 2",
-						quorumRespectivo: 66,
-					},
-				],
-			},
-			{
-				nombre: "voto 2",
-				id: "3",
-				activo: false,
-				seeVoto: false,
-				descripcion: "hola mundo",
-				opciones: [
-					{
-						nombre: "opcion 1",
-						quorumRespectivo: 34,
-					},
-					{
-						nombre: "opcion 2",
-						quorumRespectivo: 66,
-					},
-				],
-			},
-			{
-				nombre: "voto 2",
-				id: "4",
-				activo: false,
-				seeVoto: false,
-				descripcion: "hola mundo",
-				opciones: [
-					{
-						nombre: "opcion 1",
-						quorumRespectivo: 34,
-					},
-					{
-						nombre: "opcion 2",
-						quorumRespectivo: 66,
-					},
-				],
-			},
-			{
-				nombre: "voto 2",
-				id: "5",
-				activo: false,
-				seeVoto: false,
-				descripcion: "hola mundo",
-				opciones: [
-					{
-						nombre: "opcion 1",
-						quorumRespectivo: 34,
-					},
-					{
-						nombre: "opcion 2",
-						quorumRespectivo: 66,
-					},
-				],
-			},
-			{
-				nombre: "voto 7",
-				id: "6",
-				activo: true,
-				seeVoto: true,
-				descripcion: "hola mundo",
-				opciones: [
-					{
-						nombre: "opcion 1",
-						quorumRespectivo: 34,
-					},
-					{
-						nombre: "opcion 2",
-						quorumRespectivo: 66,
-					},
-				],
-			},
-			{
-				nombre: "voto 2",
-				id: "7",
-				activo: false,
-				seeVoto: false,
-				descripcion: "hola mundo",
-				opciones: [
-					{
-						nombre: "opcion 1",
-						quorumRespectivo: 34,
-					},
-					{
-						nombre: "opcion 2",
-						quorumRespectivo: 66,
-					},
-				],
-			},
-			{
-				nombre: "voto 2",
-				id: "8",
-				activo: false,
-				seeVoto: false,
-				descripcion: "hola mundo",
-				opciones: [
-					{
-						nombre: "opcion 1",
-						quorumRespectivo: 34,
-					},
-					{
-						nombre: "opcion 2",
-						quorumRespectivo: 66,
-					},
-				],
-			},
-		]);
+		// this.sortData({ active: "activo", direction: "desc" }, [
+		// 	{
+		// 		nombre: "voto 1",
+		// 		id: "1",
+		// 		activo: true,
+		// 		seeVoto: true,
+		// 		descripcion: "hola mundo",
+		// 		opciones: [
+		// 			{
+		// 				nombre: "opcion 1",
+		// 				quorumRespectivo: 0,
+		// 			},
+		// 			{
+		// 				nombre: "opcion 2",
+		// 				quorumRespectivo: 0,
+		// 			},
+		// 		],
+		// 	},
+		// 	{
+		// 		nombre: "voto 2",
+		// 		id: "2",
+		// 		activo: false,
+		// 		seeVoto: false,
+		// 		descripcion: "hola mundo",
+		// 		opciones: [
+		// 			{
+		// 				nombre: "opcion 1",
+		// 				quorumRespectivo: 34,
+		// 			},
+		// 			{
+		// 				nombre: "opcion 2",
+		// 				quorumRespectivo: 66,
+		// 			},
+		// 		],
+		// 	},
+		// 	{
+		// 		nombre: "voto 2",
+		// 		id: "3",
+		// 		activo: false,
+		// 		seeVoto: false,
+		// 		descripcion: "hola mundo",
+		// 		opciones: [
+		// 			{
+		// 				nombre: "opcion 1",
+		// 				quorumRespectivo: 34,
+		// 			},
+		// 			{
+		// 				nombre: "opcion 2",
+		// 				quorumRespectivo: 66,
+		// 			},
+		// 		],
+		// 	},
+		// 	{
+		// 		nombre: "voto 2",
+		// 		id: "4",
+		// 		activo: false,
+		// 		seeVoto: false,
+		// 		descripcion: "hola mundo",
+		// 		opciones: [
+		// 			{
+		// 				nombre: "opcion 1",
+		// 				quorumRespectivo: 34,
+		// 			},
+		// 			{
+		// 				nombre: "opcion 2",
+		// 				quorumRespectivo: 66,
+		// 			},
+		// 		],
+		// 	},
+		// 	{
+		// 		nombre: "voto 2",
+		// 		id: "5",
+		// 		activo: false,
+		// 		seeVoto: false,
+		// 		descripcion: "hola mundo",
+		// 		opciones: [
+		// 			{
+		// 				nombre: "opcion 1",
+		// 				quorumRespectivo: 34,
+		// 			},
+		// 			{
+		// 				nombre: "opcion 2",
+		// 				quorumRespectivo: 66,
+		// 			},
+		// 		],
+		// 	},
+		// 	{
+		// 		nombre: "voto 7",
+		// 		id: "6",
+		// 		activo: true,
+		// 		seeVoto: true,
+		// 		descripcion: "hola mundo",
+		// 		opciones: [
+		// 			{
+		// 				nombre: "opcion 1",
+		// 				quorumRespectivo: 34,
+		// 			},
+		// 			{
+		// 				nombre: "opcion 2",
+		// 				quorumRespectivo: 66,
+		// 			},
+		// 		],
+		// 	},
+		// 	{
+		// 		nombre: "voto 2",
+		// 		id: "7",
+		// 		activo: false,
+		// 		seeVoto: false,
+		// 		descripcion: "hola mundo",
+		// 		opciones: [
+		// 			{
+		// 				nombre: "opcion 1",
+		// 				quorumRespectivo: 34,
+		// 			},
+		// 			{
+		// 				nombre: "opcion 2",
+		// 				quorumRespectivo: 66,
+		// 			},
+		// 		],
+		// 	},
+		// 	{
+		// 		nombre: "voto 2",
+		// 		id: "8",
+		// 		activo: false,
+		// 		seeVoto: false,
+		// 		descripcion: "hola mundo",
+		// 		opciones: [
+		// 			{
+		// 				nombre: "opcion 1",
+		// 				quorumRespectivo: 34,
+		// 			},
+		// 			{
+		// 				nombre: "opcion 2",
+		// 				quorumRespectivo: 66,
+		// 			},
+		// 		],
+		// 	},
+		// ]);
 	}
 	changeViewVoto(voto: any) {
 		if (!voto.activo) {
@@ -217,6 +218,9 @@ export class VotosComponent implements OnInit {
 	atras() {
 		return this.modalCtrl.dismiss(null, "cancel");
 	}
+
+	selectOption() {}
+
 	sortData(sort: Sort, votos: any[]) {
 		const data = votos.slice();
 		if (!sort.active || sort.direction === "") {

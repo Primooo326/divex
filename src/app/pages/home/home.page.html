@@ -64,9 +64,8 @@
             </ion-item>
             <ion-item>
               <ion-label>Entrar con token</ion-label>
-              <ion-input placeholder="token"></ion-input>
-              <ion-button slot="end" (click)="token()" [routerLink]="['/asamblea']"
-                routerLinkActive="router-link-active">
+              <ion-input [formControl]="tokenForm" placeholder="token"></ion-input>
+              <ion-button slot="end" (click)="token()">
                 Entrar
               </ion-button>
             </ion-item>

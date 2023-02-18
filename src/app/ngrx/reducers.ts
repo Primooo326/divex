@@ -11,8 +11,11 @@ import {
 	asambleaConfigActions,
 	asistentesActions,
 	inmuebleActions,
+	quorumActions,
+	votoActualActions,
 } from "./actions";
 import { IInmueble, IInmuebleQuorum, profile } from "../models/inmueble";
+import { IVoto } from "../models/votos";
 
 export const asambleaConfig: IAsambleaConfig = {
 	video: true,
@@ -100,4 +103,35 @@ export const AsistentesReducer = createReducer(
 	on(asistentesActions.setAsistentes, (state, { asistentes }) => [
 		...asistentes,
 	]),
+);
+export const quorumTotal = 0;
+export const quorumReducer = createReducer(
+	quorumTotal,
+	on(quorumActions.setQuorum, (state, { coeficiente }) => state + coeficiente),
+	on(quorumActions.resetQuorum, (state) => (state = 0)),
+);
+
+export const votoActual: IVoto = {
+	nombre: "Votacion cerrada",
+	codigo: "",
+	seeVoto: false,
+	estado: false,
+	concepto: "Votacion cerrada",
+	opciones: [],
+	$key: "",
+	id: "",
+};
+export const votoActualReducer = createReducer(
+	votoActual,
+	on(votoActualActions.setVoto, (state, { voto }) => ({ ...voto })),
+	on(votoActualActions.votacionCerrada, (state) => ({
+		nombre: "Votacion cerrada",
+		codigo: "",
+		seeVoto: false,
+		estado: false,
+		concepto: "Votacion cerrada",
+		opciones: [],
+		$key: "",
+		id: "",
+	})),
 );
